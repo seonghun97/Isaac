@@ -12,8 +12,8 @@ private:
 	int PlayerSpeed; //이동속도
 
 public:
-	Player(std::string name, int MaxHp, int Hp, int Damage, int Range, int AtkSpeed, int PlayerSpeed)
-		:name(name), MaxHp(MaxHp), Hp(Hp), Damage(Damage), Range(Range), AtkSpeed(AtkSpeed), PlayerSpeed(PlayerSpeed) {}
+	Player(std::string name, int MaxHp, int Hp, int Damage, int Range, int AtkSpeed, int PlayerSpeed);
+
 	std::string GetName() const
 	{
 		return name;
