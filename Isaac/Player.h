@@ -45,12 +45,11 @@ public:
 
 public:
 
-	void TakeDamage(){}
-	void PlayerMove()
-	{
-
-	}
-
+	void TakeDamage(int damage); // 데미지 받기
+	void PlayerMove(char direction); // 이동
+	void Attack(); // 공격
+	void Heal(int amount); // 체력 회복
+	void DisplayHealth() const; // 현재 체력 표시
 
 
 
