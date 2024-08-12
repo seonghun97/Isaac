@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35027.167
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Isaac", "Isaac\Isaac.vcxproj", "{B1AAED7C-A92C-4CC5-9E3A-92BAFFE76EEE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B1AAED7C-A92C-4CC5-9E3A-92BAFFE76EEE}.Debug|x64.ActiveCfg = Debug|x64
+		{B1AAED7C-A92C-4CC5-9E3A-92BAFFE76EEE}.Debug|x64.Build.0 = Debug|x64
+		{B1AAED7C-A92C-4CC5-9E3A-92BAFFE76EEE}.Debug|x86.ActiveCfg = Debug|Win32
+		{B1AAED7C-A92C-4CC5-9E3A-92BAFFE76EEE}.Debug|x86.Build.0 = Debug|Win32
+		{B1AAED7C-A92C-4CC5-9E3A-92BAFFE76EEE}.Release|x64.ActiveCfg = Release|x64
+		{B1AAED7C-A92C-4CC5-9E3A-92BAFFE76EEE}.Release|x64.Build.0 = Release|x64
+		{B1AAED7C-A92C-4CC5-9E3A-92BAFFE76EEE}.Release|x86.ActiveCfg = Release|Win32
+		{B1AAED7C-A92C-4CC5-9E3A-92BAFFE76EEE}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {2DF4CBC0-39C1-48CD-AF24-ED6DE9D76AC2}
+	EndGlobalSection
+EndGlobal
