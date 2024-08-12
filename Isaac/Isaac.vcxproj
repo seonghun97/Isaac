@@ -140,13 +140,16 @@
     <ClCompile Include="BossIsacdote.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="Itemdote.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="monsterdote.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="PlayerDote.cpp" />
+    <ClCompile Include="PlayerDote.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
