@@ -73,7 +73,7 @@ int main()
 	while (true)
 	{
 		drawmap();
-		Sleep(300);
+		Sleep(3000);
 	}
 	
 	return 0;
