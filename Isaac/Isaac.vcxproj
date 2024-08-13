@@ -131,6 +131,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="Monster.h" />
+    <ClInclude Include="monsterdote.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayerDote.h" />
   </ItemGroup>
@@ -141,9 +142,10 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Itemdote.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Map.cpp" />
+    <ClCompile Include="Maptdote.cpp" />
     <ClCompile Include="Monster.cpp" />
     <ClCompile Include="monsterdote.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
