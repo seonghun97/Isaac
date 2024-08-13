@@ -21,19 +21,19 @@ void Player::TakeDamage(int damage)
 
 void Player::PlayerMove(char direction)
 {
-    switch (direction)
-    {
-    case 'w': std::cout << "Move up" << std::endl; break;
-    case 's': std::cout << "Move down" << std::endl; break;
-    case 'a': std::cout << "Move left" << std::endl; break;
-    case 'd': std::cout << "Move right" << std::endl; break;
-    default: std::cout << "Invalid direction!" << std::endl; break;
-    }
+
+
+
+
+
+
+
+
 }
 
 
 void Player::DisplayHealth() const {
-    std::string healthDisplay = "남은체력: ";
+    std::string healthDisplay = "남은체력: "    ;
     for (int i = 0; i < MaxHp; ++i) {
         if (i < Hp) {
             healthDisplay += "♥"; // 체력이 있는 부분
