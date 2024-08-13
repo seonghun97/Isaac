@@ -3,14 +3,16 @@
 #include <string>
 #include <windows.h>
 
+// 콘솔 텍스트 색상 설정 함수
 void TextColor(int foreground, int background) {
     int color = foreground + background * 16;
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
+// 몬스터를 그리는 함수
 void drawMonster(int monsterX, int monsterY) {
-    const int height = 8; // 배열의 실제 높이
-    const int width = 15; // 최대 폭
+    const int height = 8; // 몬스터의 실제 높이
+    const int width = 15; // 몬스터의 최대 폭
 
     std::string monster[height] = {
         "     11111    ",
@@ -29,14 +31,13 @@ void drawMonster(int monsterX, int monsterY) {
         coord.Y = monsterY + i;  // Y 위치 설정
         SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 
-
         for (char& c : monster[i]) {
             if (c == '1') {
-                TextColor(6, 6);  // 노란색 전경, 검은색 배경
+                TextColor(6, 6);  // 노란색 전경, 노란색 배경
                 std::cout << "■";
             }
             else if (c == '2') {
-                TextColor(15, 15);  // 흰색 전경, 검은색 배경
+                TextColor(15, 15);  // 흰색 전경, 흰색 배경
                 std::cout << "■";
             }
             else {
@@ -44,7 +45,6 @@ void drawMonster(int monsterX, int monsterY) {
                 std::cout << " ";
             }
         }
-        std::cout << std::endl;
     }
-    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경으로 리셋
 }

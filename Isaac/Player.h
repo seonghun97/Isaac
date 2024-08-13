@@ -1,57 +1,70 @@
-#include<iostream>
 #pragma once
+
+#include <iostream>
+#include <string>
+#include <windows.h>  
+
 class Player
 {
 private:
-	std::string name;
-	int MaxHp; //최대체력은 6 아이템을 활용하면 더증가시킬수있음
-	int Hp; // 남은체력 남은체력은 최대체력을 넘길수없음 소울하트 구현예정 지금은안만듬
-	int Damage; //주는데미지 기본데미지는 2 이고 공격력이올라가는 아이템먹으면 3배증가
-	int Range; //사거리
-	int AtkSpeed; //공격속도
-	int PlayerSpeed; //이동속도
+    std::string name;
+    int Hp;  // 남은 체력
+    int Damage;  // 주는 데미지
+    int Range;  // 사거리
+    int AtkSpeed;  // 공격 속도
+    int PlayerSpeed;  // 이동 속도
+    int Px;  // X 좌표
+    int Py;  // Y 좌표
+
+    void TextColor(int font, int backGround) const;
+
+    // 플레이어의 도트 아트를 그리는 메서드들
+    void DrawPlayerF() const;
+    void DrawPlayerB() const;
+    void DrawPlayerSideLeft() const;
+    void DrawPlayerSideRight() const;
+    void DrawPlayerSideLeftWalk() const;
+    void DrawPlayerSideRightWalk() const;
 
 public:
-	Player(std::string name, int MaxHp, int Hp, int Damage, int Range, int AtkSpeed, int PlayerSpeed);
+    Player(std::string name, int Hp, int Damage, int Range, int AtkSpeed, int PlayerSpeed, int Px, int Py);
 
-	std::string GetName() const
-	{
-		return name;
-	}
-	int GetMaxHp()
-	{
-		return MaxHp;
-	}
-	int GetHp()
-	{
-		return Hp;
-	}
-	int GetDamage()
-	{
-		return Damage;
-	}
-	int GetRange()
-	{
-		return Range;
-	}
-	int GetAtkSpeed()
-	{
-		return AtkSpeed;
-	}
-	int GetPlayerSpeed()
-	{
-		return PlayerSpeed;
-	}
+    void TakeDamage(int damage);
+    void PlayerMove(char direction);
+    void Attack();
+    void DisplayHealth() const;
 
-public:
+    std::string GetName() const
+    {
+        return name; 
+    }
+    int GetHp() const 
+    { 
+        return Hp;
+    }
+    int GetDamage() const
+    {
+        return Damage;
+    }
+    int GetRange() const 
+    {
+        return Range;
+    }
+    int GetAtkSpeed() const
+    {
+        return AtkSpeed; 
+    }
+    int GetPlayerSpeed() const 
+    {
 
-	void TakeDamage(int damage); // 데미지 받기
-	void PlayerMove(char direction); // 이동
-	void Attack(); // 공격
-	void Heal(int amount); // 체력 회복
-	void DisplayHealth() const; // 현재 체력 표시
-
-
-
+        return PlayerSpeed;
+    }
+    int GetPlayerCoorX() const
+    {
+        return Px;
+    }
+    int GetPlayerCoorY() const
+    {
+        return Py;
+    }
 };
-
