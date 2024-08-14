@@ -1,3 +1,4 @@
+#pragma region 장난
 //#include <iostream>
 //#include <conio.h>
 //#include <windows.h>
@@ -153,12 +154,117 @@
 //
 //    return 0;
 //}
+//#include <iostream>
+//#include <thread>
+//#include <vector>
+//#include <chrono>
+//
+//const int WIDTH = 40;
+//const int HEIGHT = 20;
+//
+//// 두 개의 버퍼 선언
+//std::vector<std::vector<char>> buffer1(HEIGHT, std::vector<char>(WIDTH, ' '));
+//std::vector<std::vector<char>> buffer2(HEIGHT, std::vector<char>(WIDTH, ' '));
+//
+//void clearBuffer(std::vector<std::vector<char>>& buffer) {
+//    for (int y = 0; y < HEIGHT; ++y) {
+//        for (int x = 0; x < WIDTH; ++x) {
+//            buffer[y][x] = ' ';
+//        }
+//    }
+//}
+//
+//void drawToBuffer(std::vector<std::vector<char>>& buffer, int frame) {
+//    // 단순하게 움직이는 텍스트를 그립니다.
+//    int x = frame % WIDTH;
+//    buffer[HEIGHT / 2][x] = '#';
+//}
+//
+//void displayBuffer(const std::vector<std::vector<char>>& buffer) {
+//    // 커서를 맨 위로 이동
+//    std::cout << "\x1B[H";
+//    for (int y = 0; y < HEIGHT; ++y) {
+//        for (int x = 0; x < WIDTH; ++x) {
+//            std::cout << buffer[y][x];
+//        }
+//        std::cout << std::endl;
+//    }
+//}
+//
+//int main() {
+//    int frame = 0;
+//    while (true) {
+//        // 버퍼 선택 및 초기화
+//        std::vector<std::vector<char>>& currentBuffer = (frame % 2 == 0) ? buffer1 : buffer2;
+//        clearBuffer(currentBuffer);
+//
+//        // 현재 버퍼에 그리기
+//        drawToBuffer(currentBuffer, frame);
+//
+//        // 현재 버퍼를 화면에 표시
+//        displayBuffer(currentBuffer);
+//
+//        // 프레임 증가 및 잠시 대기
+//        frame++;
+//        std::this_thread::sleep_for(std::chrono::milliseconds(100));
+//    }
+//
+//    return 0;
+//}
+#pragma endregion
+
+#include <iostream>
+#include <windows.h>
+#include <conio.h>
+#include <ctime>
 #include "Player.h"
+#include "gameStartscreen.h"
 
-int main() {
-    Player player("Hero", 10, 5, 3, 2, 1, 0, 0);
+void drawmap();
+void gotoxy(int x, int y);
 
-  
+int main()
+{
+    Player player("Player1", 100, 10, 5, 1, 1, 55, 50);
+
+    char lastKey = 's'; 
+
+    while (true)
+    {
+        drawmap();
+
+        switch (lastKey) 
+        {
+        case 'w':
+            player.DrawPlayerB();  
+            break;
+        case 's':
+            player.DrawPlayerF();  
+            break;
+        case 'a':
+            player.DrawPlayerSideLeft(); 
+            break;
+        case 'd':
+            player.DrawPlayerSideRight();  
+            break;
+        default:
+            player.DrawPlayerF(); 
+            break;
+        }
+
+        if (_kbhit())
+        {
+            char ch = _getch();
+            player.PlayerMove(ch);
+
+            if (ch == 27)
+                break;
+
+            lastKey = ch;
+        }
+
+        Sleep(100);  
+    }
 
     return 0;
 }

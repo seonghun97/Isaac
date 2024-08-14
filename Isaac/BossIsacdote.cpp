@@ -61,7 +61,3 @@ void drawIsaac() {
     TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
 }
 
-int main() {
-    drawIsaac();
-    return 0;
-}

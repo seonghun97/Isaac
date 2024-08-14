@@ -14,26 +14,8 @@ void Player::TakeDamage(int damage)
     }
     else
     {
-        std::cout << "Player " << name << " took " << damage << " damage. Remaining HP: " << Hp << std::endl;
+        std::cout << "Player " << name << " took " << damage << " 데미지, 남은체력 : " << Hp << std::endl;
     }
-}
-
-void Player::PlayerMove(char direction)
-{
-    // 이동 관련 로직 추가
-}
-
-void Player::DisplayHealth() const {
-    std::string healthDisplay = "남은체력: ";
-    for (int i = 0; i < Hp; ++i) {
-        healthDisplay += "♥";
-    }
-    std::cout << healthDisplay << std::endl;
-}
-
-void Player::Attack()
-{
-    // 공격 관련 로직 추가
 }
 
 void Player::TextColor(int font, int backGround) const {
@@ -42,8 +24,7 @@ void Player::TextColor(int font, int backGround) const {
 }
 
 void Player::DrawPlayerF() const {
-    const int height = 10;
-    const int width = 10;
+    const int height = 8;
 
     std::string Player[height] = {
         "    0000       ",
@@ -57,8 +38,8 @@ void Player::DrawPlayerF() const {
     };
 
     for (int i = 0; i < height; ++i) {
-        std::cout << std::string((120 - width) / 2, ' ');  // 중앙 정렬
-
+        COORD coord = { (SHORT)Px, (SHORT)(Py + i) };
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
         for (char& c : Player[i]) {
             if (c == '0') {
                 TextColor(8, 8);  // 회색 전경, 검은색 배경
@@ -73,15 +54,13 @@ void Player::DrawPlayerF() const {
                 std::cout << " ";
             }
         }
-        std::cout << std::endl;
     }
 
     TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
 }
 
 void Player::DrawPlayerB() const {
-    const int height = 10;
-    const int width = 10;
+    const int height = 8;
 
     std::string Playerb[height] = {
         "    0000       ",
@@ -95,8 +74,8 @@ void Player::DrawPlayerB() const {
     };
 
     for (int i = 0; i < height; ++i) {
-        std::cout << std::string((120 - width) / 2, ' ');  // 중앙 정렬
-
+        COORD coord = { (SHORT)Px, (SHORT)(Py + i) };
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
         for (char& c : Playerb[i]) {
             if (c == '0') {
                 TextColor(8, 8);  // 회색 전경, 검은색 배경
@@ -107,15 +86,13 @@ void Player::DrawPlayerB() const {
                 std::cout << " ";
             }
         }
-        std::cout << std::endl;
     }
 
     TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
 }
 
 void Player::DrawPlayerSideLeft() const {
-    const int height = 10;
-    const int width = 10;
+    const int height = 8;
 
     std::string Players[height] = {
         "    0000       ",
@@ -129,8 +106,8 @@ void Player::DrawPlayerSideLeft() const {
     };
 
     for (int i = 0; i < height; ++i) {
-        std::cout << std::string((120 - width) / 2, ' ');  // 중앙 정렬
-
+        COORD coord = { (SHORT)Px, (SHORT)(Py + i) };
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
         for (char& c : Players[i]) {
             if (c == '0') {
                 TextColor(8, 8);  // 회색 전경, 검은색 배경
@@ -145,15 +122,13 @@ void Player::DrawPlayerSideLeft() const {
                 std::cout << " ";
             }
         }
-        std::cout << std::endl;
     }
 
     TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
 }
 
 void Player::DrawPlayerSideRight() const {
-    const int height = 10;
-    const int width = 10;
+    const int height = 8;
 
     std::string Players[height] = {
         "    0000       ",
@@ -167,8 +142,8 @@ void Player::DrawPlayerSideRight() const {
     };
 
     for (int i = 0; i < height; ++i) {
-        std::cout << std::string((120 - width) / 2, ' ');  // 중앙 정렬
-
+        COORD coord = { (SHORT)Px, (SHORT)(Py + i) };
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
         for (char& c : Players[i]) {
             if (c == '0') {
                 TextColor(8, 8);  // 회색 전경, 검은색 배경
@@ -183,15 +158,13 @@ void Player::DrawPlayerSideRight() const {
                 std::cout << " ";
             }
         }
-        std::cout << std::endl;
     }
 
     TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
 }
 
 void Player::DrawPlayerSideLeftWalk() const {
-    const int height = 10;
-    const int width = 10;
+    const int height = 8;
 
     std::string Player[height] = {
         "    0000       ",
@@ -205,8 +178,8 @@ void Player::DrawPlayerSideLeftWalk() const {
     };
 
     for (int i = 0; i < height; ++i) {
-        std::cout << std::string((120 - width) / 2, ' ');  // 중앙 정렬
-
+        COORD coord = { (SHORT)Px, (SHORT)(Py + i) };
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
         for (char& c : Player[i]) {
             if (c == '0') {
                 TextColor(8, 8);  // 회색 전경, 검은색 배경
@@ -221,15 +194,13 @@ void Player::DrawPlayerSideLeftWalk() const {
                 std::cout << " ";
             }
         }
-        std::cout << std::endl;
     }
 
     TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
 }
 
 void Player::DrawPlayerSideRightWalk() const {
-    const int height = 10;
-    const int width = 10;
+    const int height = 8;
 
     std::string Player[height] = {
         "    0000       ",
@@ -243,8 +214,8 @@ void Player::DrawPlayerSideRightWalk() const {
     };
 
     for (int i = 0; i < height; ++i) {
-        std::cout << std::string((120 - width) / 2, ' ');  // 중앙 정렬
-
+        COORD coord = { (SHORT)Px, (SHORT)(Py + i) };
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
         for (char& c : Player[i]) {
             if (c == '0') {
                 TextColor(8, 8);  // 회색 전경, 검은색 배경
@@ -259,8 +230,36 @@ void Player::DrawPlayerSideRightWalk() const {
                 std::cout << " ";
             }
         }
-        std::cout << std::endl;
     }
 
     TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+}
+
+void Player::PlayerMove(char direction) {
+    for (int i = 0; i < 8; ++i) {
+        COORD coord = { (SHORT)Px, (SHORT)(Py + i) };
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+        std::cout << "                "; 
+    }
+
+    switch (direction) {
+    case 'w':
+        if (Py > 1) Py--;
+        DrawPlayerB();
+        break;
+    case 's':
+        if (Py < 58) Py++;
+        DrawPlayerF();
+        break;
+    case 'a':
+        if (Px > 1) Px--;
+        DrawPlayerSideLeftWalk();
+        break;
+    case 'd':
+        if (Px < 118) Px++;
+        DrawPlayerSideRightWalk();
+        break;
+    default:
+        break;
+    }
 }

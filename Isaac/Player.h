@@ -3,6 +3,8 @@
 #include <iostream>
 #include <string>
 #include <windows.h>  
+#include<conio.h>
+#include<vector>
 
 class Player
 {
@@ -16,6 +18,7 @@ private:
     int Px;  // X 좌표
     int Py;  // Y 좌표
 
+public:
     void TextColor(int font, int backGround) const;
 
     // 플레이어의 도트 아트를 그리는 메서드들
@@ -26,7 +29,6 @@ private:
     void DrawPlayerSideLeftWalk() const;
     void DrawPlayerSideRightWalk() const;
 
-public:
     Player(std::string name, int Hp, int Damage, int Range, int AtkSpeed, int PlayerSpeed, int Px, int Py);
 
     void TakeDamage(int damage);
@@ -67,4 +69,5 @@ public:
     {
         return Py;
     }
+
 };
