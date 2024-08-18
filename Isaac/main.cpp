@@ -213,42 +213,49 @@
 //}
 #pragma endregion
 
-#include <iostream>
-#include <windows.h>
-#include <conio.h>
-#include <ctime>
+
 #include "Player.h"
-#include "gameStartscreen.h"
 
 void drawmap();
 void gotoxy(int x, int y);
 
 int main()
 {
-    Player player("Player1", 100, 10, 5, 1, 1, 55, 50);
+    Player player("플레이어", 6, 10, 5, 1, 1, 55, 50); 
 
-    char lastKey = 's'; 
+    char lastKey = 's';
+
 
     while (true)
     {
+        if (player.GetHp() <= 0) {
+            system("cls");
+            std::cout << "플레이어 사망" << std::endl; 
+            break; 
+        }
+
         drawmap();
 
-        switch (lastKey) 
+        player.DrawHearts(); 
+
+     
+
+        switch (lastKey)
         {
         case 'w':
-            player.DrawPlayerB();  
+            player.DrawPlayerB();
             break;
         case 's':
-            player.DrawPlayerF();  
+            player.DrawPlayerF();
             break;
         case 'a':
-            player.DrawPlayerSideLeft(); 
+            player.DrawPlayerSideLeft();
             break;
         case 'd':
-            player.DrawPlayerSideRight();  
+            player.DrawPlayerSideRight();
             break;
         default:
-            player.DrawPlayerF(); 
+            player.DrawPlayerF();
             break;
         }
 
@@ -257,13 +264,13 @@ int main()
             char ch = _getch();
             player.PlayerMove(ch);
 
-            if (ch == 27)
+            if (ch == 27) 
                 break;
 
             lastKey = ch;
         }
 
-        Sleep(100);  
+        Sleep(100);
     }
 
     return 0;

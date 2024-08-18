@@ -29,7 +29,7 @@ int main()
         {
             return 0;
         }
-        clearScreen(); 
+        system("cls");
     }
     return 0;
 }

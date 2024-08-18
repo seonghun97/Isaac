@@ -35,6 +35,7 @@ public:
     void PlayerMove(char direction);
     void Attack();
     void DisplayHealth() const;
+    void DrawHearts() const; // 하트 그리기 함수 추가
 
     std::string GetName() const
     {
