@@ -303,7 +303,7 @@ void Player::PlayerMove(char direction)
 {
     for (int i = 0; i < 8; ++i)
     {
-        COORD coord = { Px, Py + i };
+        COORD coord = { (SHORT)Px, (SHORT)(Py + i) };
         SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
         std::cout << "                "; 
     }
