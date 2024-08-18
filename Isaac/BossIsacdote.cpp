@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <windows.h>  // Windows 콘솔 색상 설정에 필요
+#include <windows.h>
 
 void TextColor(int font, int backGround) {
     int Color = font + backGround * 16;
@@ -30,34 +30,34 @@ void drawIsaac() {
     };
 
     for (int i = 0; i < height; ++i) {
-        std::cout << std::string((120 - width) / 2, ' ');  // 중앙 정렬
+        std::cout << std::string((120 - width) / 2, ' '); 
 
         for (char& c : isaac[i]) {
             if (c == '0') {
-                TextColor(8, 8);  // 회색 전경, 검은색 배경
+                TextColor(8, 8);  
                 std::cout << "■";
             }
             else if (c == '1') {
-                TextColor(15, 15);  // 흰색 전경, 검은색 배경
+                TextColor(15, 15);
                 std::cout << "■";
             }
             else if (c == '2') {
-                TextColor(11, 11);  // 연파랑 전경, 검은색 배경
+                TextColor(11, 11);
                 std::cout << "■";
             }
             else if (c == '3') {
-                TextColor(15, 0);  // 흰색 전경, 검은색 배경
+                TextColor(15, 0); 
                 std::cout << "■";
             }
             else {
-                TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+                TextColor(15, 0); 
                 std::cout << " ";
             }
         }
         std::cout << std::endl;
     }
 
-    // 마지막에 콘솔 색상 리셋
-    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+    
+    TextColor(15, 0); 
 }
 

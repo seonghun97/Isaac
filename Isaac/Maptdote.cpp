@@ -67,18 +67,7 @@ std::string map[60] =
 	"111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111"
 };
 
-//
-//int main()
-//{
-//	srand(time(NULL));
-//	while (true)
-//	{
-//		drawmap();
-//		Sleep(300);
-//	}
-//	
-//	return 0;
-//}
+
 void drawmap()
 {
 	system("cls");
@@ -88,22 +77,21 @@ void drawmap()
 		for (int w = 0; w < 120; w++)
 		{
 			if (map[h][w] == '0')
-				std::cout << ' '; // 0은 공백으로 출력
+				std::cout << ' '; 
 			if (map[h][w] == '1')
-				std::cout << '#'; // 1은 #으로 출력
+				std::cout << '#'; 
 		}
 		std::cout << std::endl;
 	}
 
-	// 몬스터의 크기 정의
+	
 	const int monsterWidth = 15;
 	const int monsterHeight = 17;
 
-	// 몬스터의 위치를 맵의 맨 위 중앙으로 설정
+	
 	int monsterX = (120 - monsterWidth) / 2;
-	int monsterY = -12; // 맨 위에 위치시키기 위해 Y 좌표를 0으로 설정
-
-	// 유효한 위치에 몬스터 그리기
+	int monsterY = -12; 
+	
 	drawMonster(monsterX, monsterY);
 
 }

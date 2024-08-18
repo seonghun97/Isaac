@@ -228,7 +228,8 @@ int main()
 
     while (true)
     {
-        if (player.GetHp() <= 0) {
+        if (player.GetHp() <= 0)
+        {
             system("cls");
             std::cout << "플레이어 사망" << std::endl; 
             break; 

@@ -70,23 +70,23 @@ void Player::DrawPlayerF() const
         {
             if (c == '0') 
             {
-                TextColor(8, 8);  // 회색 전경, 검은색 배경
+                TextColor(8, 8); 
                 std::cout << "■";
             }
             else if (c == '1') 
             {
-                TextColor(15, 15);  // 흰색 전경, 검은색 배경
+                TextColor(15, 15);
                 std::cout << "■";
             }
             else
             {
-                TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+                TextColor(15, 0);
                 std::cout << " ";
             }
         }
     }
 
-    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+    TextColor(15, 0); 
 }
 
 void Player::DrawPlayerB() const
@@ -113,18 +113,18 @@ void Player::DrawPlayerB() const
         {
             if (c == '0')
             {
-                TextColor(8, 8);  // 회색 전경, 검은색 배경
+                TextColor(8, 8); 
                 std::cout << "■";
             }
             else
             {
-                TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+                TextColor(15, 0);
                 std::cout << " ";
             }
         }
     }
 
-    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+    TextColor(15, 0);  
 }
 
 void Player::DrawPlayerSideLeft() const 
@@ -151,23 +151,23 @@ void Player::DrawPlayerSideLeft() const
         {
             if (c == '0')
             {
-                TextColor(8, 8);  // 회색 전경, 검은색 배경
+                TextColor(8, 8); 
                 std::cout << "■";
             }
             else if (c == '1') 
             {
-                TextColor(15, 15);  // 흰색 전경, 검은색 배경
+                TextColor(15, 15);
                 std::cout << "■";
             }
             else
             {
-                TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+                TextColor(15, 0);
                 std::cout << " ";
             }
         }
     }
 
-    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+    TextColor(15, 0);
 }
 
 void Player::DrawPlayerSideRight() const
@@ -194,23 +194,23 @@ void Player::DrawPlayerSideRight() const
         {
             if (c == '0')
             {
-                TextColor(8, 8);  // 회색 전경, 검은색 배경
+                TextColor(8, 8);  
                 std::cout << "■";
             }
             else if (c == '1')
             {
-                TextColor(15, 15);  // 흰색 전경, 검은색 배경
+                TextColor(15, 15);
                 std::cout << "■";
             }
             else 
             {
-                TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+                TextColor(15, 0); 
                 std::cout << " ";
             }
         }
     }
 
-    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+    TextColor(15, 0);  
 }
 
 void Player::DrawPlayerSideLeftWalk() const 
@@ -237,23 +237,23 @@ void Player::DrawPlayerSideLeftWalk() const
         {
             if (c == '0') 
             {
-                TextColor(8, 8);  // 회색 전경, 검은색 배경
+                TextColor(8, 8);  
                 std::cout << "■";
             }
             else if (c == '1') 
             {
-                TextColor(15, 15);  // 흰색 전경, 검은색 배경
+                TextColor(15, 15);
                 std::cout << "■";
             }
             else 
             {
-                TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+                TextColor(15, 0); 
                 std::cout << " ";
             }
         }
     }
 
-    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+    TextColor(15, 0); 
 }
 
 void Player::DrawPlayerSideRightWalk() const 
@@ -280,23 +280,23 @@ void Player::DrawPlayerSideRightWalk() const
         {
             if (c == '0')
             {
-                TextColor(8, 8);  // 회색 전경, 검은색 배경
+                TextColor(8, 8); 
                 std::cout << "■";
             }
             else if (c == '1')
             {
-                TextColor(15, 15);  // 흰색 전경, 검은색 배경
+                TextColor(15, 15);
                 std::cout << "■";
             }
             else 
             {
-                TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+                TextColor(15, 0);
                 std::cout << " ";
             }
         }
     }
 
-    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+    TextColor(15, 0);
 }
 
 void Player::PlayerMove(char direction) 
