@@ -214,44 +214,29 @@
 
 
 #include "Player.h"
-//#include "DoubleBuffering.h"
-//
-//const int WIDHT = 120;
-//const int HEIGHT = 60;
 
 void drawmap();
-
-void gotoxy();
+void gotoxy(int x, int y);
 void cursor();
 
-int main()
-{
-    
-
-    /*DoubleBuffering buffer(width, height);*/
-
-    Player player("플레이어", 6, 10, 5, 1, 1, 55, 50); 
-
+int main() {
+    Player player("플레이어", 6, 10, 5, 1, 1, 55, 50);
     char lastKey = 's';
-    /*buffer.clearBuffer();*/
 
-    while (true)
-    {
-        if (player.GetHp() <= 0)
-        {
-            std::cout << "플레이어 사망" << std::endl; 
-            break; 
+    while (true) {
+        if (player.GetHp() <= 0) {
+            std::cout << "플레이어 사망" << std::endl;
+            break;
         }
-        gotoxy();
+
+        gotoxy(0, 0);
         cursor();
         drawmap();
 
-        player.DrawHearts(); 
+        player.DrawHearts();
+        player.UpdateBullets();  
 
-     
-
-        switch (lastKey)
-        {
+        switch (lastKey) {
         case 'w':
             player.DrawPlayerB();
             break;
@@ -264,26 +249,24 @@ int main()
         case 'd':
             player.DrawPlayerSideRight();
             break;
-        case ' ':
-            player.Attack();
-            break;
         default:
             player.DrawPlayerF();
             break;
         }
 
-        if (_kbhit())
-        {
+        if (_kbhit()) {
             char ch = _getch();
             player.PlayerMove(ch);
 
-            if (ch == 27) 
+            if (ch == 27)  // ESC 키로 게임 종료
                 break;
 
-            lastKey = ch;
+            if (ch != ' ')  // 방향 키가 눌렸을 때만 lastKey 업데이트
+                lastKey = ch;
+
+            if (ch == ' ')  // 스페이스바로 공격
+                player.Attack();
         }
-    /*    buffer.swapBuffer();
-        buffer.displayBuffer();*/
 
         Sleep(10);
     }
@@ -291,16 +274,13 @@ int main()
     return 0;
 }
 
-void gotoxy()
-{
+void gotoxy(int x, int y) {
     COORD coord;
-    coord.X = 0;
-    coord.Y = 0;
-     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
-void cursor()
-{
+void cursor() {
     CONSOLE_CURSOR_INFO cursorInfo;
     cursorInfo.dwSize = 1;
     cursorInfo.bVisible = FALSE;

@@ -1,11 +1,24 @@
 #include "Player.h"
-
+#include "Bullet.h"
 Player::Player(std::string name, int Hp, int Damage, int Range, int AtkSpeed, int PlayerSpeed, int Px, int Py)
-    : name(name), Hp(Hp), Damage(Damage), Range(Range), AtkSpeed(AtkSpeed), PlayerSpeed(PlayerSpeed), Px(Px), Py(Py)
+    : name(name), Hp(Hp), Damage(Damage), Range(Range), AtkSpeed(AtkSpeed), PlayerSpeed(PlayerSpeed), Px(Px), Py(Py), dx(0) ,dy(1)
 {
 }
 
-void Player::TakeDamage(int damage) 
+void Player::UpdateBullets() {
+    // 모든 총알을 이동시키고, 비활성화된 총알을 제거합니다.
+    for (auto it = bullets.begin(); it != bullets.end();) {
+        it->move();
+        if (!it->isActive()) {
+            it = bullets.erase(it);  // 비활성화된 총알을 제거
+        }
+        else {
+            ++it;
+        }
+    }
+}
+
+void Player::TakeDamage(int damage)
 {
     Hp -= damage;
     if (Hp <= 0)
@@ -50,21 +63,9 @@ void Player::gotoxy(int x, int y)
 }
 void Player::Attack()
 {
-//    int x, y;
-//    int dx, dy;
-//    gotoxy(x, y);
-//    std::cout << " ";
-//
-//    x += dx;
-//    y += dy;
-//    if (x >= 0 && x < 120 && y >= 0 && y < 60)
-//    {
-//        gotoxy(x, y);
-//        std::cout << "*";
-//    }
-//  
-
+    bullets.emplace_back(Px + dx, Py + dy, dx, dy);
 }
+
 
 void Player::TextColor(int font, int backGround) const 
 {
@@ -325,10 +326,7 @@ void Player::DrawPlayerSideRightWalk() const
     TextColor(15, 0);
 }
 
-bool Player::isOutOfBounds() const
-{
-    return false;
-}
+
 
 void Player::PlayerMove(char direction) 
 {
@@ -339,23 +337,26 @@ void Player::PlayerMove(char direction)
         SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
         std::cout << "                "; 
     }
-
     switch (direction)
     {
     case 'w':
         if (Py > 1) Py--;
+        dx = 0; dy = -1; // 위쪽 방향
         DrawPlayerB();
         break;
     case 's':
         if (Py < 58) Py++;
+        dx = 0; dy = 1; // 아래쪽 방향
         DrawPlayerF();
         break;
     case 'a':
         if (Px > 1) Px--;
+        dx = -1; dy = 0; // 왼쪽 방향
         DrawPlayerSideLeftWalk();
         break;
     case 'd':
         if (Px < 118) Px++;
+        dx = 1; dy = 0; // 오른쪽 방향
         DrawPlayerSideRightWalk();
         break;
     default:

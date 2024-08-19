@@ -5,6 +5,9 @@
 #include <windows.h>  
 #include<conio.h>
 #include<vector>
+#include "Bullet.h"
+
+class Bullet;
 
 class Player
 {
@@ -17,7 +20,9 @@ private:
     int PlayerSpeed;  // ÀÌµ¿ ¼Óµµ
     int Px;  // X ÁÂÇ¥
     int Py;  // Y ÁÂÇ¥
-
+    int dx, dy;
+    std::vector<Bullet> bullets;
+    
 public:
     void TextColor(int font, int backGround) const;
 
@@ -28,10 +33,11 @@ public:
     void DrawPlayerSideRight() const;
     void DrawPlayerSideLeftWalk() const;
     void DrawPlayerSideRightWalk() const;
-    bool isOutOfBounds() const;
+    
 
     Player(std::string name, int Hp, int Damage, int Range, int AtkSpeed, int PlayerSpeed, int Px, int Py);
 
+    void UpdateBullets();
     void TakeDamage(int damage);
     void PlayerMove(char direction);
     void DrawHearts() const;
@@ -71,5 +77,5 @@ public:
     {
         return Py;
     }
-
+    
 };
