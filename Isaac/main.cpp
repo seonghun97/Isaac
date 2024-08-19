@@ -3,7 +3,6 @@
 //#include <conio.h>
 //#include <windows.h>
 //#include <vector>
-//#include <thread>
 //#include <chrono>
 //
 //using namespace std;
@@ -149,7 +148,7 @@
 //            break;
 //        }
 //
-//        this_thread::sleep_for(chrono::milliseconds(100)); // 움직임 속도 조절
+//          Sleep(200);
 //    }
 //
 //    return 0;
@@ -215,26 +214,36 @@
 
 
 #include "Player.h"
+//#include "DoubleBuffering.h"
+//
+//const int WIDHT = 120;
+//const int HEIGHT = 60;
 
 void drawmap();
-void gotoxy(int x, int y);
+
+void gotoxy();
+void cursor();
 
 int main()
 {
+    
+
+    /*DoubleBuffering buffer(width, height);*/
+
     Player player("플레이어", 6, 10, 5, 1, 1, 55, 50); 
 
     char lastKey = 's';
-
+    /*buffer.clearBuffer();*/
 
     while (true)
     {
         if (player.GetHp() <= 0)
         {
-            system("cls");
             std::cout << "플레이어 사망" << std::endl; 
             break; 
         }
-
+        gotoxy();
+        cursor();
         drawmap();
 
         player.DrawHearts(); 
@@ -255,6 +264,9 @@ int main()
         case 'd':
             player.DrawPlayerSideRight();
             break;
+        case ' ':
+            player.Attack();
+            break;
         default:
             player.DrawPlayerF();
             break;
@@ -270,9 +282,27 @@ int main()
 
             lastKey = ch;
         }
+    /*    buffer.swapBuffer();
+        buffer.displayBuffer();*/
 
-        Sleep(100);
+        Sleep(10);
     }
 
     return 0;
+}
+
+void gotoxy()
+{
+    COORD coord;
+    coord.X = 0;
+    coord.Y = 0;
+     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+
+}
+void cursor()
+{
+    CONSOLE_CURSOR_INFO cursorInfo;
+    cursorInfo.dwSize = 1;
+    cursorInfo.bVisible = FALSE;
+    SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &cursorInfo);
 }

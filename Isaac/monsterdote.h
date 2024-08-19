@@ -70,41 +70,49 @@ void drawMonster(int monsterX, int monsterY)
         "      010010     ",
         "      11  11     "
     };
-
+    
     for (int i = 0; i < height; ++i)
     {
         COORD coord;
-        coord.X = monsterX;  // X 위치 설정
-        coord.Y = monsterY + i;  // Y 위치 설정
+        coord.X = 60;  // X 위치 설정
+        coord.Y = 5;  // Y 위치 설정
         SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
     }
+    
 
-    for (int i = 0; i < height; ++i) {
-        std::cout << std::string((120 - width) / 2, ' ');  // 중앙 정렬
-
-        for (char& c : isaac[i]) {
-            if (c == '0') {
+    for (int i = 0; i < height; ++i) 
+    {   
+        
+        for (char& c : isaac[i]) 
+        {
+            if (c == '0')
+            {
                 TextColor(8, 8);  // 회색 전경, 검은색 배경
                 std::cout << "■";
             }
-            else if (c == '1') {
+            else if (c == '1') 
+            {
                 TextColor(15, 15);  // 흰색 전경, 검은색 배경
                 std::cout << "■";
             }
-            else if (c == '2') {
+            else if (c == '2')
+            {
                 TextColor(11, 11);  // 연파랑 전경, 검은색 배경
                 std::cout << "■";
             }
-            else if (c == '3') {
+            else if (c == '3') 
+            {
                 TextColor(15, 0);  // 흰색 전경, 검은색 배경
                 std::cout << "■";
             }
-            else {
+            else 
+            {
                 TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
                 std::cout << " ";
             }
         }
         std::cout << std::endl;
+
     }
 
     // 마지막에 콘솔 색상 리셋

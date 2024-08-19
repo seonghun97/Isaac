@@ -22,6 +22,8 @@ void Player::DrawHearts() const
     coord.X = 55;
     coord.Y = 62;
 
+    
+
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
     std::cout <<"플레이어의 HP : " ;
 
@@ -38,6 +40,30 @@ void Player::DrawHearts() const
             std::cout << "♡ ";
         }
     }
+}
+void Player::gotoxy(int x, int y)
+{
+    COORD coord;
+    coord.X = x;
+    coord.Y = y;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
+void Player::Attack()
+{
+//    int x, y;
+//    int dx, dy;
+//    gotoxy(x, y);
+//    std::cout << " ";
+//
+//    x += dx;
+//    y += dy;
+//    if (x >= 0 && x < 120 && y >= 0 && y < 60)
+//    {
+//        gotoxy(x, y);
+//        std::cout << "*";
+//    }
+//  
+
 }
 
 void Player::TextColor(int font, int backGround) const 
@@ -299,8 +325,14 @@ void Player::DrawPlayerSideRightWalk() const
     TextColor(15, 0);
 }
 
+bool Player::isOutOfBounds() const
+{
+    return false;
+}
+
 void Player::PlayerMove(char direction) 
 {
+    
     for (int i = 0; i < 8; ++i)
     {
         COORD coord = { (SHORT)Px, (SHORT)(Py + i) };
@@ -330,3 +362,4 @@ void Player::PlayerMove(char direction)
         break;
     }
 }
+

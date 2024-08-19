@@ -28,6 +28,7 @@ public:
     void DrawPlayerSideRight() const;
     void DrawPlayerSideLeftWalk() const;
     void DrawPlayerSideRightWalk() const;
+    bool isOutOfBounds() const;
 
     Player(std::string name, int Hp, int Damage, int Range, int AtkSpeed, int PlayerSpeed, int Px, int Py);
 
@@ -35,6 +36,7 @@ public:
     void PlayerMove(char direction);
     void DrawHearts() const;
     void Attack();
+    void gotoxy(int x, int y);
 
     std::string GetName() const
     {

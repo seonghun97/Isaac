@@ -70,7 +70,6 @@ std::string map[60] =
 
 void drawmap()
 {
-	system("cls");
 
 	for (int h = 0; h < 60; h++)
 	{
@@ -91,7 +90,7 @@ void drawmap()
 	
 	int monsterX = (120 - monsterWidth) / 2;
 	int monsterY = -12; 
-	
+
 	drawMonster(monsterX, monsterY);
 
 }

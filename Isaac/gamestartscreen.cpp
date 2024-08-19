@@ -9,7 +9,6 @@ void init();
 void titleDraw();
 void infoDraw();
 void gotoxy(int x, int y);
-void clearScreen();
 
 int main()
 {
@@ -29,14 +28,12 @@ int main()
         {
             return 0;
         }
-        system("cls");
     }
     return 0;
 }
 
 void infoDraw()
 {
-    clearScreen();
     gotoxy(0, 0);
     std::cout << "\t\t";
     std::cout << "           [조작법]" << std::endl << std::endl;
@@ -103,7 +100,6 @@ void init()
 
 void titleDraw()
 {
-    clearScreen();
     gotoxy(0, 0);
     std::cout << "┌--------------------------------------------------------┐" << std::endl;
     std::cout << "|             @              @      @@@@@    @           |" << std::endl;
@@ -130,10 +126,7 @@ void gotoxy(int x, int y)
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
 }
 
-void clearScreen()
-{
-    system("cls");
-}
+
 
 
 #pragma region 초반
