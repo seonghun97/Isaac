@@ -87,19 +87,19 @@ void Monster::drawMonster(int monsterX, int monsterY) {
 
         for (char c : isaac[i]) {
             if (c == '0') {
-                TextColor(8, 0);  // 회색 전경, 검은색 배경
+                TextColor(8, 8);  // 회색 전경, 검은색 배경
                 std::cout << "■";
             }
             else if (c == '1') {
-                TextColor(15, 0);  // 흰색 전경, 검은색 배경
+                TextColor(15, 15);  // 흰색 전경, 검은색 배경
                 std::cout << "■";
             }
             else if (c == '2') {
-                TextColor(11, 0);  // 연파랑 전경, 검은색 배경
+                TextColor(11, 11);  // 연파랑 전경, 검은색 배경
                 std::cout << "■";
             }
             else if (c == '3') {
-                TextColor(15, 0);  // 흰색 전경, 검은색 배경
+                TextColor(15, 15);  // 흰색 전경, 검은색 배경
                 std::cout << "■";
             }
             else {

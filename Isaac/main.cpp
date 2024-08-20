@@ -228,7 +228,7 @@ int main() {
     char lastKey = 's';
 
     
-    int monsterX = (120 - monsterWidth) / 2;
+    int monsterX = 48;
     int monsterY = 2;
     drawmap();
 
