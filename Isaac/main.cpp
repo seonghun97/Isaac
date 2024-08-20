@@ -222,34 +222,51 @@ void cursor();
 
 const int monsterWidth = 15;
 const int monsterHeight = 17;
-int main() {
+
+int main()
+{
     Player player("플레이어", 6, 10, 5, 1, 1, 50, 43);
     Monster monster("아이작", 80, 1);
     char lastKey = 's';
 
-    
+
     int monsterX = 48;
     int monsterY = 2;
     drawmap();
 
-    while (true) {
-        if (player.GetHp() <= 0) 
+    while (true)
+    {
+        if (player.GetHp() <= 0)
         {
             std::cout << "플레이어 사망" << std::endl;
             break;
         }
-        
+        else if (monster.GetHp() <= 0)
+        {
+            std::cout << monster.GetName() << " 사망" << std::endl;
+            break;
+        }
+
         gotoxy(0, 0);
         cursor();
-        
-        
 
-        monster.drawMonster(monsterX, monsterY);
-        
+        player.UpdateInvincibility();
+
+       // monster.moveTowardsPlayer(player.GetPlayerCoorX(), player.GetPlayerCoorY());
+
+        monster.drawMonster(monster.GetMx(), monster.GetMy());
+
+        if (player.CollidingWithMonster(monster)) 
+        {
+            player.TakeDamage(monster.GetDamage());
+        }
+
         player.DrawHearts();
-        player.UpdateBullets();  
-        
-        switch (lastKey) {
+
+        player.UpdateBullets(monster);
+
+        switch (lastKey)
+        {
         case 'w':
             player.DrawPlayerB();
             break;
@@ -267,27 +284,31 @@ int main() {
             break;
         }
 
-        if (_kbhit()) {
+        // 키 입력 처리
+        if (_kbhit()) 
+        {
             char ch = _getch();
             player.PlayerMove(ch);
 
-            if (ch == 27)  // ESC 키로 게임 종료
+            if (ch == 27)
+            {
                 break;
-
-            if (ch != ' ')  // 방향 키가 눌렸을 때만 lastKey 업데이트
+            }
+            if (ch != ' ')
+            {
                 lastKey = ch;
-
-            if (ch == ' ')  // 스페이스바로 공격
+            }
+            if (ch == ' ')
+            {
                 player.Attack();
+            }
         }
-        
+
         Sleep(10);
     }
-
-    return 0;
 }
-
-void gotoxy(int x, int y) {
+void gotoxy(int x, int y) 
+{
     COORD coord;
     coord.X = x;
     coord.Y = y;

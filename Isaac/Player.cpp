@@ -5,34 +5,50 @@ Player::Player(std::string name, int Hp, int Damage, int Range, int AtkSpeed, in
     : name(name), Hp(Hp), Damage(Damage), Range(Range), AtkSpeed(AtkSpeed), PlayerSpeed(PlayerSpeed), Px(Px), Py(Py), dx(0) ,dy(1)
 {
 }
-
-void Player::UpdateBullets() 
+void Player::UpdateBullets(Monster& monster)
 {
-    for (auto it = bullets.begin(); it != bullets.end();) 
+    for (auto it = bullets.begin(); it != bullets.end();)
     {
         it->move();
-        if (!it->isActive()) 
+
+        if (monster.isHit(*it))
         {
-            it = bullets.erase(it);  // 비활성화된 총알을 제거
+            monster.TakeDamage(this->Damage);  
+            it = bullets.erase(it);  
+            continue;  
+        }
+        else if (!it->isActive())
+        {
+            it = bullets.erase(it); 
+        }
+        else
+        {
+            ++it;  
+        }
+    }
+}
+
+
+
+void Player::TakeDamage(int damage) 
+{
+    if (!invincible) 
+    {
+        Hp -= damage;
+        if (Hp <= 0)
+        {
+            std::cout << name << " 사망" << std::endl;
+            Hp = 0;
         }
         else 
         {
-            ++it;
+            // 무적 상태 활성화
+            invincible = true;
+            invincibleEndTime = std::chrono::steady_clock::now() + std::chrono::seconds(1); // 1초 무적
         }
+        DrawHearts();
     }
 }
-
-void Player::TakeDamage(int damage)
-{
-    Hp -= damage;
-    if (Hp <= 0)
-    {
-        std::cout << name << " 사망" << std::endl;
-        Hp = 0; 
-    }
-    DrawHearts(); 
-}
-
 void Player::DrawHearts() const 
 {
     COORD coord;
@@ -329,6 +345,39 @@ void Player::DrawPlayerSideRightWalk() const
     TextColor(15, 0);
 }
 
+bool Player::CollidingWithMonster(const Monster& monster) const 
+{
+    
+    int playerLeft = Px;
+    int playerRight = Px + 10; 
+    int playerTop = Py;
+    int playerBottom = Py + 8; 
+
+    int monsterLeft = monster.GetMx();
+    int monsterRight = monster.GetMx() + 17; 
+    int monsterTop = monster.GetMy();
+    int monsterBottom = monster.GetMy() + 15;
+
+    // 충돌 여부를 판단합니다.
+    bool isColliding = playerRight >= monsterLeft &&
+        playerLeft <= monsterRight &&
+        playerBottom >= monsterTop &&
+        playerTop <= monsterBottom;
+
+    return isColliding;
+}
+
+void Player::UpdateInvincibility()
+{
+    if (invincible)
+    {
+        auto now = std::chrono::steady_clock::now();
+        if (now >= invincibleEndTime)
+        {
+            invincible = false; // 무적 상태 해제
+        }
+    }
+}
 
 
 void Player::PlayerMove(char direction) 

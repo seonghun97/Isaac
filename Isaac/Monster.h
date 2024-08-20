@@ -14,7 +14,7 @@ private:
 	int Damage;
 	int Mx, My;
 	int Mdx, Mdy;
-    int movecounter;
+    
 	std::vector<Bullet> bullet;
 
 
@@ -24,7 +24,7 @@ public:
 	void drawMonster(int monsterX, int monsterY);
 	void TakeDamage(int Damage);
 	void Attack();
-    bool ishit(int bulletX, int bulletY);
+    //void moveTowardsPlayer(int playerX, int playerY);
     bool isHit(const Bullet& bullet) const;
 	
     std::string GetName() const
@@ -55,9 +55,6 @@ public:
     {
         return Mdy;
     }
-    int Getcounter() const
-    {
-        return movecounter;
-    }
+ 
 };
 

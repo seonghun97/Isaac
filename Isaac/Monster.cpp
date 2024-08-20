@@ -51,7 +51,7 @@ void TextColor(int foreground, int background) {
 
 
 Monster::Monster(std::string Mname, int hp, int Damage)
-    :Mname(Mname), hp(hp), Damage(Damage),Mx(0),My(0),Mdx(0),Mdy(0),movecounter(0)
+    :Mname(Mname), hp(hp), Damage(Damage),Mx(48),My(0),Mdx(0),Mdy(0)
 {
 }
 
@@ -113,35 +113,49 @@ void Monster::drawMonster(int monsterX, int monsterY) {
     TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
 }
 
-void Monster::TakeDamage(int Damage)
-{
-    hp -= Damage;
-    if (hp < 0)
-    {
-        std::cout << Mname << "을 죽였다" << std::endl;
-        
-    }
-}
-
 void Monster::Attack()
 {
 }
 
-bool Monster::ishit(int BulletX, int BulletY)
-{
-    const int width = 17;
-    const int height = 15;
 
-    return(BulletX >= Mx && BulletX < Mx + width && BulletY >= My && BulletY < My + height);
-}
 bool Monster::isHit(const Bullet& bullet) const
 {
-    return false;
+    const int width = 17;  // 몬스터의 너비
+    const int height = 15;  // 몬스터의 높이
+
+    int bulletX = bullet.GetX();
+    int bulletY = bullet.GetY();
+
+    
+    return (bulletX >= Mx && bulletX < Mx + width && bulletY >= My && bulletY < My + height);
 }
 
 
 
-/*
- return (bulletX >= x && bulletX <= x + monsterWidth &&
-            bulletY >= y && bulletY <= y + monsterHeight);
-*/
+
+void Monster::TakeDamage(int Damage)
+{
+    hp -= Damage;
+    if (hp <= 0)
+    {
+        std::cout << Mname << "이 죽었다!" << std::endl;
+    }
+}
+//void Monster::moveTowardsPlayer(int playerX, int playerY) {
+//    if (Mx < playerX) {
+//        Mx++;  // 몬스터가 플레이어의 왼쪽에 있다면 오른쪽으로 이동
+//    }
+//    else if (Mx > playerX) {
+//        Mx--;  // 몬스터가 플레이어의 오른쪽에 있다면 왼쪽으로 이동
+//    }
+//
+//    if (My < playerY) {
+//        My++;  // 몬스터가 플레이어의 위쪽에 있다면 아래로 이동
+//    }
+//    else if (My > playerY) {
+//        My--;  // 몬스터가 플레이어의 아래쪽에 있다면 위로 이동
+//    }
+//}
+
+
+
