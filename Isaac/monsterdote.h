@@ -48,8 +48,9 @@ void TextColor(int foreground, int background) {
 //    }
 //    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경으로 리셋
 //}
-void drawMonster(int monsterX, int monsterY) 
-{
+
+
+void drawMonster(int monsterX, int monsterY) {
     const int height = 15;
     const int width = 17;
 
@@ -70,49 +71,37 @@ void drawMonster(int monsterX, int monsterY)
         "      010010     ",
         "      11  11     "
     };
-    
-    for (int i = 0; i < height; ++i)
-    {
-        COORD coord;
-        coord.X = 60;  // X 위치 설정
-        coord.Y = 5;  // Y 위치 설정
-        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-    }
-    
 
-    for (int i = 0; i < height; ++i) 
-    {   
-        
-        for (char& c : isaac[i]) 
-        {
-            if (c == '0')
-            {
-                TextColor(8, 8);  // 회색 전경, 검은색 배경
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    for (int i = 0; i < height; ++i) {
+        COORD coord;
+        coord.X = monsterX;           
+        coord.Y = monsterY + i;       
+        SetConsoleCursorPosition(hConsole, coord);
+
+        for (char c : isaac[i]) {
+            if (c == '0') {
+                TextColor(8, 0);  // 회색 전경, 검은색 배경
                 std::cout << "■";
             }
-            else if (c == '1') 
-            {
-                TextColor(15, 15);  // 흰색 전경, 검은색 배경
-                std::cout << "■";
-            }
-            else if (c == '2')
-            {
-                TextColor(11, 11);  // 연파랑 전경, 검은색 배경
-                std::cout << "■";
-            }
-            else if (c == '3') 
-            {
+            else if (c == '1') {
                 TextColor(15, 0);  // 흰색 전경, 검은색 배경
                 std::cout << "■";
             }
-            else 
-            {
+            else if (c == '2') {
+                TextColor(11, 0);  // 연파랑 전경, 검은색 배경
+                std::cout << "■";
+            }
+            else if (c == '3') {
+                TextColor(15, 0);  // 흰색 전경, 검은색 배경
+                std::cout << "■";
+            }
+            else {
                 TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
                 std::cout << " ";
             }
         }
-        std::cout << std::endl;
-
     }
 
     // 마지막에 콘솔 색상 리셋

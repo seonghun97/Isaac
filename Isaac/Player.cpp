@@ -5,14 +5,17 @@ Player::Player(std::string name, int Hp, int Damage, int Range, int AtkSpeed, in
 {
 }
 
-void Player::UpdateBullets() {
-    // 모든 총알을 이동시키고, 비활성화된 총알을 제거합니다.
-    for (auto it = bullets.begin(); it != bullets.end();) {
+void Player::UpdateBullets() 
+{
+    for (auto it = bullets.begin(); it != bullets.end();) 
+    {
         it->move();
-        if (!it->isActive()) {
+        if (!it->isActive()) 
+        {
             it = bullets.erase(it);  // 비활성화된 총알을 제거
         }
-        else {
+        else 
+        {
             ++it;
         }
     }
@@ -63,7 +66,8 @@ void Player::gotoxy(int x, int y)
 }
 void Player::Attack()
 {
-    bullets.emplace_back(Px + dx, Py + dy, dx, dy);
+    Bullet newBullet((Px+5)+ dx, (Py+2) + dy, dx, dy);
+    bullets.push_back(newBullet);
 }
 
 
@@ -122,14 +126,14 @@ void Player::DrawPlayerB() const
 
     std::string Playerb[height] = 
     {
-        "    0000       ",
-        "   0    0 ",
-        "  0      0 ",
-        "   0    0 ",
-        "    0000          ",
-        "   0 00 0         ",
-        "    0  0    ",
-        "    0  0       ",
+        "   0000       ",
+        "  0    0 ",
+        " 0      0 ",
+        "  0    0 ",
+        "   0000          ",
+        "  0 00 0         ",
+        "   0  0    ",
+        "   0  0       ",
     };
 
     for (int i = 0; i < height; ++i)
@@ -345,7 +349,7 @@ void Player::PlayerMove(char direction)
         DrawPlayerB();
         break;
     case 's':
-        if (Py < 58) Py++;
+        if (Py < 51) Py++;
         dx = 0; dy = 1; // 아래쪽 방향
         DrawPlayerF();
         break;
@@ -355,7 +359,7 @@ void Player::PlayerMove(char direction)
         DrawPlayerSideLeftWalk();
         break;
     case 'd':
-        if (Px < 118) Px++;
+        if (Px < 109) Px++;
         dx = 1; dy = 0; // 오른쪽 방향
         DrawPlayerSideRightWalk();
         break;

@@ -214,28 +214,40 @@
 
 
 #include "Player.h"
+#include "monsterdote.h"
 
 void drawmap();
 void gotoxy(int x, int y);
 void cursor();
 
+const int monsterWidth = 15;
+const int monsterHeight = 17;
+
 int main() {
     Player player("플레이어", 6, 10, 5, 1, 1, 55, 50);
     char lastKey = 's';
 
+    int monsterX = (120 - monsterWidth) / 2;
+    int monsterY = 2;
+
+
     while (true) {
-        if (player.GetHp() <= 0) {
+        if (player.GetHp() <= 0) 
+        {
             std::cout << "플레이어 사망" << std::endl;
             break;
         }
-
+        
         gotoxy(0, 0);
         cursor();
         drawmap();
+        
 
+        drawMonster(monsterX, monsterY);
+        
         player.DrawHearts();
         player.UpdateBullets();  
-
+        
         switch (lastKey) {
         case 'w':
             player.DrawPlayerB();

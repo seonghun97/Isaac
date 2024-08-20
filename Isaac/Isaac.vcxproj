@@ -130,6 +130,7 @@
     <ClInclude Include="Bullet.h" />
     <ClInclude Include="BulletPool.h" />
     <ClInclude Include="DoubleBuffering.h" />
+    <ClInclude Include="EnemyBullet.h" />
     <ClInclude Include="gameStartscreen.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Monster.h" />
@@ -140,6 +141,7 @@
     <ClCompile Include="Bullet.cpp" />
     <ClCompile Include="BulletPool.cpp" />
     <ClCompile Include="DoubleBuffering.cpp" />
+    <ClCompile Include="EnemyBullet.cpp" />
     <ClCompile Include="gamestartscreen.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>

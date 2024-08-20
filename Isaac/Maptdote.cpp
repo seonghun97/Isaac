@@ -1,4 +1,4 @@
-#include"monsterdote.h"
+
 #include"Player.h"
 #include<time.h>
 #include<stdio.h>
@@ -84,13 +84,6 @@ void drawmap()
 	}
 
 	
-	const int monsterWidth = 15;
-	const int monsterHeight = 17;
 
-	
-	int monsterX = (120 - monsterWidth) / 2;
-	int monsterY = -12; 
-
-	drawMonster(monsterX, monsterY);
 
 }

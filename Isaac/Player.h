@@ -7,7 +7,7 @@
 #include<vector>
 #include "Bullet.h"
 
-class Bullet;
+
 
 class Player
 {
@@ -20,8 +20,8 @@ private:
     int PlayerSpeed;  // ÀÌµ¿ ¼Óµµ
     int Px;  // X ÁÂÇ¥
     int Py;  // Y ÁÂÇ¥
-    int dx, dy;
-    std::vector<Bullet> bullets;
+    int dx, dy; //ÃÑ¾ËÁÂÇ¥
+    std::vector<Bullet> bullets;  //ÃÑ¾Ë¼ö
     
 public:
     void TextColor(int font, int backGround) const;
