@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "Bullet.h"
+#include "monster.h"
 Player::Player(std::string name, int Hp, int Damage, int Range, int AtkSpeed, int PlayerSpeed, int Px, int Py)
     : name(name), Hp(Hp), Damage(Damage), Range(Range), AtkSpeed(AtkSpeed), PlayerSpeed(PlayerSpeed), Px(Px), Py(Py), dx(0) ,dy(1)
 {

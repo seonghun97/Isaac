@@ -214,7 +214,7 @@
 
 
 #include "Player.h"
-#include "monsterdote.h"
+#include "monster.h"
 
 void drawmap();
 void gotoxy(int x, int y);
@@ -225,11 +225,12 @@ const int monsterHeight = 17;
 
 int main() {
     Player player("플레이어", 6, 10, 5, 1, 1, 55, 50);
+    Monster monster("아이작", 80, 1);
     char lastKey = 's';
 
     int monsterX = (120 - monsterWidth) / 2;
     int monsterY = 2;
-
+    
 
     while (true) {
         if (player.GetHp() <= 0) 
@@ -243,7 +244,7 @@ int main() {
         drawmap();
         
 
-        drawMonster(monsterX, monsterY);
+        monster.drawMonster(monsterX, monsterY);
         
         player.DrawHearts();
         player.UpdateBullets();  

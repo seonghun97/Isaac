@@ -51,6 +51,11 @@ void TextColor(int foreground, int background) {
 //}
 
 
+Monster::Monster(std::string Mname, int hp, int Damage)
+    :Mname(Mname), hp(hp), Damage(Damage),Mx(0),My(0),Mdx(0),Mdy(0)
+{
+}
+
 void Monster::drawMonster(int monsterX, int monsterY) {
     const int height = 15;
     const int width = 17;
@@ -112,4 +117,14 @@ void Monster::drawMonster(int monsterX, int monsterY) {
 void Monster::TakeDamage(int Damage)
 {
 }
+
+void Monster::Attack()
+{
+}
+
+bool Monster::isHit(int BulletX, int BulletY) const
+{
+    return Mx && BulletX && My == BulletY;
+}
+
 
