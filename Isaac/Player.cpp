@@ -36,10 +36,8 @@ void Player::TakeDamage(int damage)
 void Player::DrawHearts() const 
 {
     COORD coord;
-    coord.X = 55;
-    coord.Y = 62;
-
-    
+    coord.X = 0;
+    coord.Y = 54;
 
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
     std::cout <<"플레이어의 HP : " ;
@@ -84,14 +82,14 @@ void Player::DrawPlayerF() const
 
     std::string Player[height] = 
     {
-        "    0000       ",
-        "   0    0 ",
-        "  0 1  1 0 ",
-        "   0    0 ",
-        "    0000          ",
-        "   0 00 0         ",
-        "    0  0    ",
-        "    0  0       ",
+        "   0000   ",
+        "  0    0  ",
+        " 0 1  1 0 ",
+        "  0    0  ",
+        "   0000   ",
+        "  0 00 0  ",
+        "   0  0   ",
+        "   0  0   ",
     };
 
     for (int i = 0; i < height; ++i)
@@ -127,14 +125,14 @@ void Player::DrawPlayerB() const
 
     std::string Playerb[height] = 
     {
-        "   0000       ",
-        "  0    0 ",
+        "   0000   ",
+        "  0    0  ",
         " 0      0 ",
-        "  0    0 ",
-        "   0000          ",
-        "  0 00 0         ",
-        "   0  0    ",
-        "   0  0       ",
+        "  0    0  ",
+        "   0000   ",
+        "  0 00 0  ",
+        "   0  0   ",
+        "   0  0   ",
     };
 
     for (int i = 0; i < height; ++i)
@@ -165,14 +163,14 @@ void Player::DrawPlayerSideLeft() const
 
     std::string Players[height] =
     {
-        "    0000       ",
-        "   0    0 ",
-        "  0 1    0 ",
-        "   0    0 ",
-        "    0000      ",
-        "     00             ",
-        "     00    ",
-        "     00       ",
+        "   0000   ",
+        "  0    0  ",
+        " 0 1    0 ",
+        "  0    0  ",
+        "   0000   ",
+        "    00    ",
+        "    00    ",
+        "    00    ",
     };
 
     for (int i = 0; i < height; ++i)
@@ -208,15 +206,15 @@ void Player::DrawPlayerSideRight() const
 
     std::string Players[height] =
     {
-        "    0000       ",
-        "   0    0 ",
-        "  0    1 0 ",
-        "   0    0 ",
-        "    0000      ",
-        "     00             ",
-        "     00    ",
-        "     00       ",
-    };
+        "   0000   ",
+        "  0    0  ",
+        " 0    1 0 ",
+        "  0    0  ",
+        "   0000   ",
+        "    00    ",
+        "    00    ",
+        "    00    ",
+    };             
 
     for (int i = 0; i < height; ++i)
     {
@@ -250,15 +248,15 @@ void Player::DrawPlayerSideLeftWalk() const
     const int height = 8;
 
     std::string Player[height] = 
-    {
-        "    0000       ",
-        "   0    0 ",
-        "  0 1    0 ",
-        "   0    0 ",
-        "    0000      ",
-        "     00             ",
-        "    0 0    ",
-        "   0  0       ",
+    {              
+        "   0000   ",
+        "  0    0  ",
+        " 0 1    0 ",
+        "  0    0  ",
+        "   0000   ",
+        "    00    ",
+        "   0 0    ",
+        "  0  0    ",
     };
 
     for (int i = 0; i < height; ++i)
@@ -294,14 +292,14 @@ void Player::DrawPlayerSideRightWalk() const
 
     std::string Player[height] =
     {
-        "    0000       ",
-        "   0    0 ",
-        "  0    1 0 ",
-        "   0    0 ",
-        "    0000      ",
-        "     00             ",
-        "     0 0   ",
-        "     0  0       ",
+        "   0000   ",
+        "  0    0  ",
+        " 0    1 0 ",
+        "  0    0  ",
+        "   0000   ",
+        "    00    ",
+        "    0 0   ",
+        "    0  0  ",
     };
 
     for (int i = 0; i < height; ++i) 
@@ -350,7 +348,7 @@ void Player::PlayerMove(char direction)
         DrawPlayerB();
         break;
     case 's':
-        if (Py < 51) Py++;
+        if (Py < 44) Py++;
         dx = 0; dy = 1; // 아래쪽 방향
         DrawPlayerF();
         break;
@@ -360,7 +358,7 @@ void Player::PlayerMove(char direction)
         DrawPlayerSideLeftWalk();
         break;
     case 'd':
-        if (Px < 109) Px++;
+        if (Px < 93) Px++;
         dx = 1; dy = 0; // 오른쪽 방향
         DrawPlayerSideRightWalk();
         break;

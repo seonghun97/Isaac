@@ -16,7 +16,7 @@ void Bullet::move()
     x += dx;
     y += dy;
 
-    if (x >= 1 && x < 119 && y >= 1 && y < 59) 
+    if (x >= 1 && x < 109 && y >= 1 && y < 52) 
     {
         gotoxy(x, y);
         std::cout << "0";

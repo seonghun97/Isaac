@@ -77,5 +77,13 @@ public:
     {
         return Py;
     }
+    int GetDx() const
+    {
+        return dx;
+    }
+    int GetDy() const
+    {
+        return dy;
+    }
     
 };

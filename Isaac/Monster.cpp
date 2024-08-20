@@ -1,8 +1,7 @@
 #pragma once
-#include <iostream>
-#include <string>
-#include <windows.h>
+
 #include "monster.h"
+
 
 // 콘솔 텍스트 색상 설정 함수
 void TextColor(int foreground, int background) {
@@ -52,7 +51,7 @@ void TextColor(int foreground, int background) {
 
 
 Monster::Monster(std::string Mname, int hp, int Damage)
-    :Mname(Mname), hp(hp), Damage(Damage),Mx(0),My(0),Mdx(0),Mdy(0)
+    :Mname(Mname), hp(hp), Damage(Damage),Mx(0),My(0),Mdx(0),Mdy(0),movecounter(0)
 {
 }
 
@@ -116,15 +115,33 @@ void Monster::drawMonster(int monsterX, int monsterY) {
 
 void Monster::TakeDamage(int Damage)
 {
+    hp -= Damage;
+    if (hp < 0)
+    {
+        std::cout << Mname << "을 죽였다" << std::endl;
+        
+    }
 }
 
 void Monster::Attack()
 {
 }
 
-bool Monster::isHit(int BulletX, int BulletY) const
+bool Monster::ishit(int BulletX, int BulletY)
 {
-    return Mx && BulletX && My == BulletY;
+    const int width = 17;
+    const int height = 15;
+
+    return(BulletX >= Mx && BulletX < Mx + width && BulletY >= My && BulletY < My + height);
+}
+bool Monster::isHit(const Bullet& bullet) const
+{
+    return false;
 }
 
 
+
+/*
+ return (bulletX >= x && bulletX <= x + monsterWidth &&
+            bulletY >= y && bulletY <= y + monsterHeight);
+*/

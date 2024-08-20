@@ -222,15 +222,15 @@ void cursor();
 
 const int monsterWidth = 15;
 const int monsterHeight = 17;
-
 int main() {
-    Player player("플레이어", 6, 10, 5, 1, 1, 55, 50);
+    Player player("플레이어", 6, 10, 5, 1, 1, 50, 43);
     Monster monster("아이작", 80, 1);
     char lastKey = 's';
 
+    
     int monsterX = (120 - monsterWidth) / 2;
     int monsterY = 2;
-    
+    drawmap();
 
     while (true) {
         if (player.GetHp() <= 0) 
@@ -241,7 +241,7 @@ int main() {
         
         gotoxy(0, 0);
         cursor();
-        drawmap();
+        
         
 
         monster.drawMonster(monsterX, monsterY);
@@ -280,7 +280,7 @@ int main() {
             if (ch == ' ')  // 스페이스바로 공격
                 player.Attack();
         }
-
+        
         Sleep(10);
     }
 

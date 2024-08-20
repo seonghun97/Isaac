@@ -24,7 +24,8 @@ public:
 	void drawMonster(int monsterX, int monsterY);
 	void TakeDamage(int Damage);
 	void Attack();
-    bool isHit(int BulletX, int BulletY) const;
+    bool ishit(int bulletX, int bulletY);
+    bool isHit(const Bullet& bullet) const;
 	
     std::string GetName() const
     {
@@ -53,6 +54,10 @@ public:
     int GetMdy() const
     {
         return Mdy;
+    }
+    int Getcounter() const
+    {
+        return movecounter;
     }
 };
 
