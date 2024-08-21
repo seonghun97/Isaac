@@ -37,6 +37,7 @@ public:
     void DrawPlayerSideRight() const;
     void DrawPlayerSideLeftWalk() const;
     void DrawPlayerSideRightWalk() const;
+    void DrawPlayerDeath() const;
 
     bool CollidingWithMonster(const Monster& monster) const; // 몬스터와의 충돌 감지
 

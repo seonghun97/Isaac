@@ -158,7 +158,7 @@
 //#include <vector>
 //#include <chrono>
 //
-//const int WIDTH = 40;
+//const int WIDTH = 40;asa
 //const int HEIGHT = 20;
 //
 //// 두 개의 버퍼 선언
@@ -216,19 +216,21 @@
 #include "Player.h"
 #include "monster.h"
 
+
+
 void drawmap();
 void gotoxy(int x, int y);
 void cursor();
-
+;
 const int monsterWidth = 15;
 const int monsterHeight = 17;
 
-int main()
+ int main()
 {
-    Player player("플레이어", 6, 10, 5, 1, 1, 50, 43);
-    Monster monster("아이작", 80, 1);
+    Player player("플레이어", 6, 1, 5, 4, 1, 50, 43);
+    Monster monster("아이작", 80, 1, 16);
+    
     char lastKey = 's';
-
 
     int monsterX = 48;
     int monsterY = 2;
@@ -238,12 +240,10 @@ int main()
     {
         if (player.GetHp() <= 0)
         {
-            std::cout << "플레이어 사망" << std::endl;
             break;
         }
         else if (monster.GetHp() <= 0)
         {
-            std::cout << monster.GetName() << " 사망" << std::endl;
             break;
         }
 
@@ -252,7 +252,7 @@ int main()
 
         player.UpdateInvincibility();
 
-       // monster.moveTowardsPlayer(player.GetPlayerCoorX(), player.GetPlayerCoorY());
+        monster.moveTowardsPlayer(player.GetPlayerCoorX(), player.GetPlayerCoorY());
 
         monster.drawMonster(monster.GetMx(), monster.GetMy());
 
@@ -260,9 +260,9 @@ int main()
         {
             player.TakeDamage(monster.GetDamage());
         }
-
+        
         player.DrawHearts();
-
+        monster.monsterHpBar();
         player.UpdateBullets(monster);
 
         switch (lastKey)
@@ -303,8 +303,6 @@ int main()
                 player.Attack();
             }
         }
-
-        Sleep(10);
     }
 }
 void gotoxy(int x, int y) 

@@ -14,8 +14,7 @@ public:
 
     void move();
     bool isActive() const;
-    /*int getX();
-    int getY();*/
+    
 
     int GetX() const
     {

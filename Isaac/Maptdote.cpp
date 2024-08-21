@@ -3,7 +3,11 @@
 #include<time.h>
 #include<stdio.h>
 
-void drawmap();
+class Boom;
+
+
+ 
+
 std::string map[53] =
 {
 "11111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
@@ -76,8 +80,5 @@ void drawmap()
 		}
 		std::cout << std::endl;
 	}
-
-
-
-
+	
 }

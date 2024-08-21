@@ -14,17 +14,19 @@ private:
 	int Damage;
 	int Mx, My;
 	int Mdx, Mdy;
+    int movecounter;
     
 	std::vector<Bullet> bullet;
 
 
 public:
-	Monster(std::string Mname, int hp, int Damage);
+	Monster(std::string Mname, int hp, int Damage,int monvecounter);
 
 	void drawMonster(int monsterX, int monsterY);
 	void TakeDamage(int Damage);
 	void Attack();
-    //void moveTowardsPlayer(int playerX, int playerY);
+    void monsterHpBar();
+    void moveTowardsPlayer(int playerX, int playerY);
     bool isHit(const Bullet& bullet) const;
 	
     std::string GetName() const
@@ -55,6 +57,9 @@ public:
     {
         return Mdy;
     }
- 
+    int GetMcount() const
+    {
+        return movecounter;
+    }
 };
 

@@ -24,12 +24,6 @@
     <ClInclude Include="Monster.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="gameStartscreen.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="Bullet.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -39,11 +33,17 @@
     <ClInclude Include="DoubleBuffering.h">
       <Filter>나중에할것</Filter>
     </ClInclude>
-    <ClInclude Include="EnemyBullet.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="monsterdote.h">
       <Filter>나중에할것</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyBullet.h">
+      <Filter>나중에할것</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>나중에할것</Filter>
+    </ClInclude>
+    <ClInclude Include="Boom.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -51,12 +51,6 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Monster.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Itemdote.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Maptdote.cpp">
@@ -77,10 +71,22 @@
     <ClCompile Include="DoubleBuffering.cpp">
       <Filter>나중에할것</Filter>
     </ClCompile>
+    <ClCompile Include="monsterdote.cpp">
+      <Filter>나중에할것</Filter>
+    </ClCompile>
+    <ClCompile Include="Itemdote.cpp">
+      <Filter>나중에할것</Filter>
+    </ClCompile>
     <ClCompile Include="EnemyBullet.cpp">
+      <Filter>나중에할것</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>나중에할것</Filter>
+    </ClCompile>
+    <ClCompile Include="Boom.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="monsterdote.cpp">
+    <ClCompile Include="잡몹도트.cpp">
       <Filter>나중에할것</Filter>
     </ClCompile>
   </ItemGroup>

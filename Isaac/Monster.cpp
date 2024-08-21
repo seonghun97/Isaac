@@ -9,49 +9,8 @@ void TextColor(int foreground, int background) {
     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
 }
 
-// 몬스터를 그리는 함수
-//void drawMonster(int monsterX, int monsterY) {
-//    const int height = 8; // 몬스터의 실제 높이
-//    const int width = 15; // 몬스터의 최대 폭
-//
-//    std::string monster[height] = {
-//        "     11111    ",
-//        "    1111111   ",
-//        "   122212221  ",
-//        "  11211121111  ",
-//        "  11222122211  ",
-//        "  11111111111  ",
-//        "  11111111111  ",
-//        "  11  111  11  "
-//    };
-//
-//    for (int i = 0; i < height; ++i) {
-//        COORD coord;
-//        coord.X = monsterX;  // X 위치 설정
-//        coord.Y = monsterY + i;  // Y 위치 설정
-//        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
-//
-//        for (char& c : monster[i]) {
-//            if (c == '1') {
-//                TextColor(6, 6);  // 노란색 전경, 노란색 배경
-//                std::cout << "■";
-//            }
-//            else if (c == '2') {
-//                TextColor(15, 15);  // 흰색 전경, 흰색 배경
-//                std::cout << "■";
-//            }
-//            else {
-//                TextColor(0, 0);  // 기본 검은색 배경
-//                std::cout << " ";
-//            }
-//        }
-//    }
-//    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경으로 리셋
-//}
-
-
-Monster::Monster(std::string Mname, int hp, int Damage)
-    :Mname(Mname), hp(hp), Damage(Damage),Mx(48),My(0),Mdx(0),Mdy(0)
+Monster::Monster(std::string Mname, int hp, int Damage, int movecounter)
+    :Mname(Mname), hp(hp), Damage(Damage),Mx(48),My(3),Mdx(0),Mdy(0),movecounter(0)
 {
 }
 
@@ -117,6 +76,32 @@ void Monster::Attack()
 {
 }
 
+void Monster::monsterHpBar()
+{
+    
+        COORD coord;
+        coord.X = 80;
+        coord.Y = 53;
+
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+        std::cout << "아이작의 HP : ";
+
+        int hearts = hp / 5;
+
+        for (int i = 0; i < 16; ++i)
+        {
+            if (i < hearts)
+            {
+                std::cout << "■";
+            }
+            else
+            {
+                std::cout << "□";
+            }
+        }
+    
+}
+
 
 bool Monster::isHit(const Bullet& bullet) const
 {
@@ -136,26 +121,58 @@ bool Monster::isHit(const Bullet& bullet) const
 void Monster::TakeDamage(int Damage)
 {
     hp -= Damage;
+    
     if (hp <= 0)
     {
-        std::cout << Mname << "이 죽었다!" << std::endl;
+        std::cout << Mname << "이 죽었다!" << "플레이어 윈" << std::endl;
     }
 }
-//void Monster::moveTowardsPlayer(int playerX, int playerY) {
-//    if (Mx < playerX) {
-//        Mx++;  // 몬스터가 플레이어의 왼쪽에 있다면 오른쪽으로 이동
-//    }
-//    else if (Mx > playerX) {
-//        Mx--;  // 몬스터가 플레이어의 오른쪽에 있다면 왼쪽으로 이동
-//    }
-//
-//    if (My < playerY) {
-//        My++;  // 몬스터가 플레이어의 위쪽에 있다면 아래로 이동
-//    }
-//    else if (My > playerY) {
-//        My--;  // 몬스터가 플레이어의 아래쪽에 있다면 위로 이동
-//    }
-//}
+void Monster::moveTowardsPlayer(int playerX, int playerY) 
+{
+    if (movecounter == 0)
+    {
+
+
+        for (int i = 0; i < 15; ++i)
+        {
+            COORD coord = { (SHORT)Mx, (SHORT)(My + i) };
+            SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+            std::cout << "                ";
+        }
+        if (Mx < playerX) {
+            Mx++;
+        }
+        else if (Mx > playerX) {
+            Mx--;
+        }
+
+        if (My < playerY) {
+            My++;
+        }
+        else if (My > playerY) {
+            My--;
+        }
+        if (Mx > 88)
+        {
+            Mx = 88;
+        }
+        else if (Mx < 0) {
+            Mx = 0;
+        }
+
+        if (My > 37) {
+            My = 37;
+        }
+        else if (My < 0) {
+            My = 0;
+        }
+    }
+    movecounter = (movecounter + 1) % 16;
+    
+    }
+        
+    
+
 
 
 

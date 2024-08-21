@@ -1,4 +1,4 @@
-#include "Player.h"
+#include "Player.h" 
 #include "Bullet.h"
 #include "monster.h"
 Player::Player(std::string name, int Hp, int Damage, int Range, int AtkSpeed, int PlayerSpeed, int Px, int Py)
@@ -13,17 +13,17 @@ void Player::UpdateBullets(Monster& monster)
 
         if (monster.isHit(*it))
         {
-            monster.TakeDamage(this->Damage);  
-            it = bullets.erase(it);  
-            continue;  
+            monster.TakeDamage(this->Damage);
+            it = bullets.erase(it);
+            continue;
         }
         else if (!it->isActive())
         {
-            it = bullets.erase(it); 
+            it = bullets.erase(it);
         }
         else
         {
-            ++it;  
+            ++it;
         }
     }
 }
@@ -37,14 +37,14 @@ void Player::TakeDamage(int damage)
         Hp -= damage;
         if (Hp <= 0)
         {
-            std::cout << name << " 사망" << std::endl;
+            std::cout << name << " die  패배"  << std::endl;
             Hp = 0;
         }
         else 
         {
             // 무적 상태 활성화
             invincible = true;
-            invincibleEndTime = std::chrono::steady_clock::now() + std::chrono::seconds(1); // 1초 무적
+            invincibleEndTime = std::chrono::steady_clock::now() + std::chrono::seconds(2); // 1초 무적
         }
         DrawHearts();
     }
@@ -53,7 +53,7 @@ void Player::DrawHearts() const
 {
     COORD coord;
     coord.X = 0;
-    coord.Y = 54;
+    coord.Y = 53;
 
     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
     std::cout <<"플레이어의 HP : " ;
@@ -81,8 +81,9 @@ void Player::gotoxy(int x, int y)
 }
 void Player::Attack()
 {
-    Bullet newBullet((Px+5)+ dx, (Py+2) + dy, dx, dy);
-    bullets.push_back(newBullet);
+        Bullet newBullet((Px + 5) + dx, (Py + 2) + dy, dx, dy);
+        bullets.push_back(newBullet);
+     
 }
 
 
@@ -345,20 +346,63 @@ void Player::DrawPlayerSideRightWalk() const
     TextColor(15, 0);
 }
 
+void Player::DrawPlayerDeath() const
+{
+    const int height = 8;
+
+    std::string Player[height] =
+    {
+        "  ",
+        "  ",
+        "  ",
+        "    ",
+        "   ",
+        "    ",
+        "   ",
+        "   ",
+    };
+
+    for (int i = 0; i < height; ++i)
+    {
+        COORD coord = { (SHORT)Px, (SHORT)(Py + i) };
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+        for (char& c : Player[i])
+        {
+            if (c == '0')
+            {
+                TextColor(8, 8);
+                std::cout << "■";
+            }
+            else if (c == '1')
+            {
+                TextColor(15, 15);
+                std::cout << "■";
+            }
+            else
+            {
+                TextColor(15, 0);
+                std::cout << " ";
+            }
+        }
+    }
+
+    TextColor(15, 0);
+
+}
+
 bool Player::CollidingWithMonster(const Monster& monster) const 
 {
     
-    int playerLeft = Px;
-    int playerRight = Px + 10; 
-    int playerTop = Py;
-    int playerBottom = Py + 8; 
+    int playerLeft = Px+1;
+    int playerRight = Px + 5; 
+    int playerTop = Py+1;
+    int playerBottom = Py + 4; 
 
     int monsterLeft = monster.GetMx();
     int monsterRight = monster.GetMx() + 17; 
     int monsterTop = monster.GetMy();
     int monsterBottom = monster.GetMy() + 15;
 
-    // 충돌 여부를 판단합니다.
     bool isColliding = playerRight >= monsterLeft &&
         playerLeft <= monsterRight &&
         playerBottom >= monsterTop &&
