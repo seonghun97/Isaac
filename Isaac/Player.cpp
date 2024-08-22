@@ -44,7 +44,7 @@ void Player::TakeDamage(int damage)
         {
             // 公利 惑怕 劝己拳
             invincible = true;
-            invincibleEndTime = std::chrono::steady_clock::now() + std::chrono::seconds(2); // 1檬 公利
+            invincibleEndTime = std::chrono::steady_clock::now() + std::chrono::seconds(1); // 1檬 公利
         }
         DrawHearts();
     }
@@ -348,18 +348,17 @@ void Player::DrawPlayerSideRightWalk() const
 
 void Player::DrawPlayerDeath() const
 {
-    const int height = 8;
+    const int height = 7;
 
     std::string Player[height] =
     {
-        "  ",
-        "  ",
-        "  ",
-        "    ",
-        "   ",
-        "    ",
-        "   ",
-        "   ",
+        "   000              ",
+        "  0   0  0     0    ",
+        " 0 1   0  0   0     ",
+        "0       000000      ",
+        " 0 1   0  0   0     ",
+        "  0   0    0   0    ",
+        "   000               ",
     };
 
     for (int i = 0; i < height; ++i)
@@ -375,8 +374,8 @@ void Player::DrawPlayerDeath() const
             }
             else if (c == '1')
             {
-                TextColor(15, 15);
-                std::cout << "♂";
+                TextColor(15, 0);
+                std::cout << "x";
             }
             else
             {

@@ -131,14 +131,14 @@ void titleDraw()
     std::cout << "└--------------------------------------------------------┘" << std::endl;
 }
 
-// 게임 시작 함수
 void gamestart()
 {
-    system("cls"); // 게임 시작 전에 화면을 지움
+    system("cls"); 
     Player player("플레이어", 6, 1, 5, 4, 1, 50, 43);
     Monster monster("아이작", 80, 1, 16);
 
     char lastKey = 's';
+    bool isMonsterMoving = false; 
 
     int monsterX = 48;
     int monsterY = 2;
@@ -148,10 +148,14 @@ void gamestart()
     {
         if (player.GetHp() <= 0)
         {
+            player.DrawPlayerDeath();
+            Sleep(2000);
             break;
         }
         else if (monster.GetHp() <= 0)
         {
+            monster.deathMonster();
+            Sleep(2000);
             break;
         }
 
@@ -160,8 +164,10 @@ void gamestart()
 
         player.UpdateInvincibility();
 
-        monster.moveTowardsPlayer(player.GetPlayerCoorX(), player.GetPlayerCoorY());
-
+        if (isMonsterMoving)
+        {
+            monster.moveTowardsPlayer(player.GetPlayerCoorX(), player.GetPlayerCoorY());
+        }
         monster.drawMonster(monster.GetMx(), monster.GetMy());
 
         if (player.CollidingWithMonster(monster))
@@ -210,9 +216,15 @@ void gamestart()
             {
                 player.Attack();
             }
+            if (ch == 'r')
+            {
+                // 'r' 키를 눌렀을 때 몬스터의 움직임 상태를 토글
+                isMonsterMoving = !isMonsterMoving;
+            }
         }
     }
 }
+
 // gotoxy 함수 정의
 void gotoxy(int x, int y)
 {

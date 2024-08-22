@@ -22,6 +22,7 @@ private:
 public:
 	Monster(std::string Mname, int hp, int Damage,int monvecounter);
 
+    void deathMonster();
 	void drawMonster(int monsterX, int monsterY);
 	void TakeDamage(int Damage);
 	void Attack();

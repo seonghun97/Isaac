@@ -72,6 +72,59 @@ void Monster::drawMonster(int monsterX, int monsterY) {
     TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
 }
 
+void Monster::deathMonster() {
+    const int height = 15;
+    const int width = 17;
+
+    std::string isaac[height] = {
+        "      000000     ",
+        "     01111110    ",
+        "    0111111110   ",
+        "   011111111110  ",
+        "   013011113010  ",
+        "   010011110010  ",
+        "111012200002210111  ",
+        " 1110210000120111   ",
+        "  11101111110111    ",
+        "    0100000010   ",
+        "    0001111000   ",
+        "      011110     ",
+        "      011110     ",
+        "      010010     ",
+        "      11  11     "
+    };
+    HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+
+    for (int i = 0; i < height; ++i) {
+        COORD coord = { (SHORT)Mx, (SHORT)(My + i) };
+        SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+        for (char c : isaac[i]) {
+            if (c == '0') {
+                TextColor(8, 8);  // 회색 전경, 검은색 배경
+                std::cout << "■";
+            }
+            else if (c == '1') {
+                TextColor(15, 15);  // 흰색 전경, 검은색 배경
+                std::cout << "■";
+            }
+            else if (c == '2') {
+                TextColor(11, 11);  // 연파랑 전경, 검은색 배경
+                std::cout << "■";
+            }
+            else if (c == '3') {
+                TextColor(15, 15);  // 흰색 전경, 검은색 배경
+                std::cout << "■";
+            }
+            else {
+                TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+                std::cout << " ";
+            }
+        }
+    }
+
+    // 마지막에 콘솔 색상 리셋
+    TextColor(15, 0);  // 기본 흰색 전경, 검은색 배경
+}
 void Monster::Attack()
 {
 }
