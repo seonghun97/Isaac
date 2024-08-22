@@ -192,17 +192,21 @@ void Monster::moveTowardsPlayer(int playerX, int playerY)
             SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
             std::cout << "                ";
         }
-        if (Mx < playerX) {
+        if (Mx < playerX)
+        {
             Mx++;
         }
-        else if (Mx > playerX) {
+        else if (Mx > playerX) 
+        {
             Mx--;
         }
 
-        if (My < playerY) {
+        if (My < playerY) 
+        {
             My++;
         }
-        else if (My > playerY) {
+        else if (My > playerY)
+        {
             My--;
         }
         if (Mx > 88)
